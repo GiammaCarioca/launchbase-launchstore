@@ -5,7 +5,7 @@
       {% for category in categories %}
       <option value="{{category.id}}"
       {% if product.category_id == category.id %}selected{% endif %}>
-        {{ category.name }}
+      {{ category.name }}
       </option>
       {% endfor %}
     </select>
@@ -62,7 +62,7 @@
   </div>
 </div>
 
-{% if product.status %}
+{% if (product.status == '1') or (product.status == '0') %}
 <div class="item">
   <div>Disponível?</div>
   <div>
