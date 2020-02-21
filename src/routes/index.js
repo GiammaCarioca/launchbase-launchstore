@@ -1,17 +1,22 @@
 const express = require('express')
 const routes = express.Router()
 
+const HomeController = require('../app/controllers/HomeController')
+const SearchController = require('../app/controllers/SearchController')
+
 const products = require('./products')
 const users = require('./users')
 
-routes.get('/', function(req, res) {
-	return res.render('layout')
-})
+// Home
+routes.get('/', HomeController.index)
+
+// Search
+routes.get('/products/search', SearchController.index)
 
 routes.use('/products', products)
 routes.use('/users', users)
 
-// Alias
+// Aliases
 routes.get('/ads/create', function(req, res) {
 	return res.redirect('/produts/create')
 })
